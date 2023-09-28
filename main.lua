@@ -8,9 +8,9 @@ function love.load()
     width = love.graphics.getWidth()
     height = love.graphics.getHeight()
     love.graphics.setBackgroundColor(150 / 255, 150 / 255, 150 / 255)
-    mover = Mover:create(Vector:create(width / 3, height / 4), Vector:create(0, 0), 20, 30, 1)
-    mover1 = Mover:create(Vector:create(width / 2 - 150, height / 4), Vector:create(0, 0), 20, 130, 1)
-    mover2 = Mover:create(Vector:create(width / 2 + 50, height / 4), Vector:create(0, 0), 20, 300, 1)
+    mover = Mover:create(Vector:create(width / 2 - 300, height / 4), Vector:create(0, 0), 20, 30, 1)
+    mover1 = Mover:create(Vector:create(width / 2 - 200, height / 4), Vector:create(0, 0), 20, 130, 1)
+    mover2 = Mover:create(Vector:create(width / 2, height / 4), Vector:create(0, 0), 20, 350, 1)
     water = Liquid:create(0, height - 300, width, 300, 0.01)
     gravity = Vector:create(0, 0.1)
 end
@@ -37,8 +37,6 @@ function move(mover)
         drag = 0.5 * 0.28 * water.c  * mag * mag * mover.width
         drag_vec = (mover.velocity * -1):norm()
         drag_vec:mul(drag)
-        print("Drag "..tostring(drag_vec))
-        print("Vel "..tostring(mover.velocity))
         mover:applyForce(drag_vec)
     end
 
